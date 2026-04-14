@@ -1,0 +1,23 @@
+[
+  {
+    "id": "item_1",
+    "name": "Classic Hot Dog",
+    "price": 6.50,
+    "image": "placeholder_dog.jpg",
+    "category": "Food"
+  },
+  {
+    "id": "item_2",
+    "name": "Large Soda",
+    "price": 4.00,
+    "image": "placeholder_soda.jpg",
+    "category": "Drinks"
+  },
+  {
+    "id": "item_3",
+    "name": "Nachos with Cheese",
+    "price": 8.00,
+    "image": "placeholder_nachos.jpg",
+    "category": "Food"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "stall_1",
+    "name": "North End Bites",
+    "location": "North Concourse, Section 102"
+  },
+  {
+    "id": "stall_2",
+    "name": "East Side Drinks",
+    "location": "East Concourse, Section 115"
+  },
+  {
+    "id": "stall_3",
+    "name": "South Grill",
+    "location": "South Concourse, Section 130"
+  }
+]
