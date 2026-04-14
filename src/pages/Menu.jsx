@@ -22,7 +22,7 @@ const Menu = () => {
   return (
     <div className="flex flex-col flex-1 bg-white relative">
       <main className="flex-1 pb-28 animate-in fade-in duration-300">
-        <header className="px-6 py-4 flex items-center gap-4 bg-white/80 backdrop-blur-xl sticky top-[73px] z-40 border-b border-gray-100 shadow-sm">
+        <header className="px-6 py-4 flex items-center gap-4 bg-white sticky top-[69px] z-40 border-b border-gray-100 shadow-sm">
           <button 
             onClick={() => navigate('/home')}
             className="p-2 -ml-2 rounded-full hover:bg-gray-100 transition min-h-[44px] min-w-[44px] flex items-center justify-center"
