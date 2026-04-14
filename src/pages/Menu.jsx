@@ -32,34 +32,36 @@ const Menu = () => {
           <h1 className="text-2xl font-black text-gray-900 tracking-tight">Food & Drinks</h1>
         </header>
         
-        <section className="px-6 py-6">
-          <ul className="flex flex-col gap-6">
+        <section className="px-5 py-6">
+          <div className="grid grid-cols-2 gap-4">
             {menuData.map((item) => (
-              <li key={item.id} className="flex items-center gap-5 group cursor-pointer">
-                <div className="w-24 h-24 bg-gray-50 border border-gray-100 rounded-3xl flex-shrink-0 relative overflow-hidden flex items-center justify-center shadow-sm">
+              <div key={item.id} className="flex flex-col group cursor-pointer bg-white border border-gray-100 rounded-[2rem] p-3 shadow-sm hover:shadow-md transition-all relative">
+                
+                <div className="w-full aspect-square bg-gray-50 rounded-[1.5rem] relative overflow-hidden flex items-center justify-center shadow-inner mb-3">
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-transparent opacity-50"></div>
                   <UtensilsIcon category={item.category} />
                 </div>
                 
-                <div className="flex-1 flex flex-col justify-between py-1 border-b border-gray-50 pb-5">
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900 leading-tight mb-1">{item.name}</h3>
-                    <p className="text-sm text-gray-400 font-bold tracking-wider uppercase">{item.category}</p>
+                <div className="flex-1 flex flex-col justify-between px-1 pb-1">
+                  <div className="mb-3">
+                    <p className="text-xs text-gray-400 font-bold tracking-wider uppercase mb-1">{item.category}</p>
+                    <h3 className="font-bold text-gray-900 leading-tight">{item.name}</h3>
                   </div>
-                  <div className="flex items-center justify-between mt-3">
-                    <p className="font-bold text-gray-900 text-lg">${item.price.toFixed(2)}</p>
+                  
+                  <div className="flex items-center justify-between mt-auto">
+                    <p className="font-black text-gray-900">${item.price.toFixed(2)}</p>
                     <button 
                       onClick={() => addItem(item)}
-                      className="bg-gray-900 text-white rounded-full p-2.5 hover:bg-gray-700 hover:scale-105 active:scale-95 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center shadow-lg shadow-gray-200"
+                      className="bg-gray-900 text-white rounded-2xl hover:bg-gray-700 hover:scale-105 active:scale-95 transition-all p-2 flex items-center justify-center shadow-md shadow-gray-200"
                       aria-label={`Add ${item.name} to cart`}
                     >
                       <Plus className="w-5 h-5 stroke-[3]" />
                     </button>
                   </div>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
       </main>
 
