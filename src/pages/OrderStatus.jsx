@@ -86,7 +86,7 @@ const OrderStatus = () => {
 
   return (
     <main className="min-h-full flex-1 bg-white animate-in slide-in-from-bottom-8 fade-in duration-500 flex flex-col">
-      <header className="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white sticky top-[73px] z-40">
+      <header className="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
         <h1 className="text-2xl font-black text-gray-900 tracking-tight">Track Order</h1>
         <button 
           onClick={() => navigate('/home')}
@@ -96,7 +96,7 @@ const OrderStatus = () => {
         </button>
       </header>
 
-      <section className="px-6 py-8 flex-1">
+      <section className="px-6 pt-8 pb-24 flex-1">
         {loading && (
           <div className="flex flex-col items-center justify-center py-24 text-indigo-600">
              <Loader2 className="w-12 h-12 animate-spin mb-4" />
