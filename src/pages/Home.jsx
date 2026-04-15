@@ -4,11 +4,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSeat } from '../hooks/useSeat';
-import { Utensils, Timer, LifeBuoy, ChevronRight, Map } from 'lucide-react';
+import { Utensils, Timer, LifeBuoy, ChevronRight, Map, LogOut } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { seat } = useSeat();
+  const { seat, clearSeat } = useSeat();
 
   useEffect(() => {
     if (!seat) {
@@ -20,9 +20,18 @@ const Home = () => {
 
   return (
     <main className="p-6 flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 bg-gray-50">
-      <div className="mb-2">
-        <h2 className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1 drop-shadow-sm">Current Location</h2>
-        <h1 className="text-4xl font-black text-gray-900 tracking-tight">Seat {seat}</h1>
+      <div className="flex items-start justify-between mb-2">
+        <div>
+          <h2 className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1 drop-shadow-sm">Current Location</h2>
+          <h1 className="text-4xl font-black text-gray-900 tracking-tight">Seat {seat}</h1>
+        </div>
+        <button 
+          onClick={() => { clearSeat(); navigate('/'); }}
+          className="p-3 bg-white border border-gray-200 text-red-500 rounded-2xl hover:bg-red-50 hover:border-red-100 transition shadow-sm active:scale-95"
+          aria-label="Log Out"
+        >
+          <LogOut className="w-5 h-5" />
+        </button>
       </div>
       
       <nav className="flex flex-col gap-4 mt-2">
