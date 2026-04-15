@@ -1,0 +1,86 @@
+import React, { useMemo } from 'react';
+import { MapPin, User, Store } from 'lucide-react';
+
+const STALL_COORDS = {
+  stall_1: { x: 400, y: 120 },   // North Concourse
+  stall_2: { x: 680, y: 300 },   // East Concourse
+  stall_3: { x: 400, y: 480 },   // South Concourse
+};
+
+// Simple pseudo-random hash to map arbitrary seat numbers to a visual coordinate
+const getSeatCoords = (seatString) => {
+  if (!seatString) return null;
+  let hash = 0;
+  for (let i = 0; i < seatString.length; i++) {
+    hash = seatString.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  // Map x to 200-600, y to 200-400
+  const x = 200 + (Math.abs(hash) % 400);
+  const y = 200 + (Math.abs(hash * 3) % 200);
+  return { x, y };
+};
+
+const ArenaMapSVG = ({ activeStallId, userSeat }) => {
+  const seatCoords = useMemo(() => getSeatCoords(userSeat), [userSeat]);
+
+  return (
+    <svg viewBox="0 0 800 600" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      {/* Background/Base Floor */}
+      <rect width="800" height="600" fill="#f8fafc" rx="24" />
+      
+      {/* The Arena Center / Court / Pitch */}
+      <rect x="250" y="200" width="300" height="200" rx="40" fill="#e2e8f0" stroke="#cbd5e1" strokeWidth="4" />
+      <circle cx="400" cy="300" r="40" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="3" />
+      <line x1="400" y1="200" x2="400" y2="400" stroke="#cbd5e1" strokeWidth="3" />
+      <text x="400" y="305" textAnchor="middle" fill="#94a3b8" fontSize="20" fontWeight="bold" opacity="0.5">STAGE / COURT</text>
+      
+      {/* Seating Sections Outer Ring */}
+      <path d="M 150 100 Q 400 0 650 100 L 700 150 Q 800 300 700 450 L 650 500 Q 400 600 150 500 L 100 450 Q 0 300 100 150 Z" 
+            fill="none" stroke="#e2e8f0" strokeWidth="60" opacity="0.3"/>
+            
+      <path d="M 180 130 Q 400 50 620 130 L 660 170 Q 750 300 660 430 L 620 470 Q 400 550 180 470 L 140 430 Q 50 300 140 170 Z" 
+            fill="none" stroke="#cbd5e1" strokeWidth="80" opacity="0.5"/>
+
+      {/* Exits & Restrooms - Subtle Markers */}
+      <text x="400" y="40" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">NORTH ENTRANCE</text>
+      <text x="400" y="570" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">SOUTH ENTRANCE</text>
+      
+      {/* Stall Markers */}
+      {Object.entries(STALL_COORDS).map(([id, coords]) => {
+        const isActive = activeStallId && activeStallId === id;
+        const isMuted = activeStallId && activeStallId !== id;
+        return (
+          <g key={id} transform={`translate(${coords.x - 24}, ${coords.y - 24})`} 
+             style={{ 
+               transition: 'all 0.3s ease',
+               opacity: isMuted ? 0.4 : 1,
+               transform: `translate(${coords.x - 24}px, ${coords.y - 24}px) scale(${isActive ? 1.2 : 1})`,
+               transformOrigin: '24px 24px'
+             }}>
+            <circle cx="24" cy="24" r="20" fill={isActive ? '#f59e0b' : '#ffffff'} stroke={isActive ? '#d97706' : '#e2e8f0'} strokeWidth="2" filter="drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))"/>
+            <svg x="12" y="12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#64748b'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <text x="24" y="55" fontSize="14" fontWeight="bold" fill={isActive ? '#d97706' : '#64748b'} textAnchor="middle" style={{ filter: 'drop-shadow(0px 1px 2px rgba(255,255,255,0.8))' }}>
+              Stall {id.split('_')[1]}
+            </text>
+          </g>
+        );
+      })}
+
+      {/* User Seat Pin */}
+      {seatCoords && (
+        <g transform={`translate(${seatCoords.x - 20}, ${seatCoords.y - 20})`} style={{ animation: 'bounce 2s infinite' }}>
+           <path d="M 20 40 C 20 40 40 24 40 16 C 40 4.954 31.046 -4 20 -4 C 8.954 -4 0 4.954 0 16 C 0 24 20 40 20 40 Z" fill="#4f46e5" filter="drop-shadow(0 4px 6px rgb(79 70 229 / 0.4))"/>
+           <circle cx="20" cy="14" r="6" fill="#ffffff" />
+           <text x="20" y="-12" fontSize="16" fontWeight="900" fill="#312e81" textAnchor="middle" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.9)' }}>
+             You
+           </text>
+        </g>
+      )}
+    </svg>
+  );
+};
+
+export default ArenaMapSVG;

@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSeat } from '../hooks/useSeat';
-import { Utensils, Timer, LifeBuoy, ChevronRight } from 'lucide-react';
+import { Utensils, Timer, LifeBuoy, ChevronRight, Map } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -71,6 +71,22 @@ const Home = () => {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-1 tracking-tight">Get Help</h3>
               <p className="text-gray-500 text-sm font-medium">Contact venue staff</p>
+            </div>
+          </div>
+          <ChevronRight className="text-gray-300 w-7 h-7 group-hover:translate-x-1.5 transition-transform relative z-10" />
+        </Link>
+        
+        <Link 
+          to="/map" 
+          className="group relative overflow-hidden bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all min-h-[44px] flex items-center justify-between hover:-translate-y-1"
+        >
+          <div className="relative z-10 flex items-center gap-5">
+            <div className="bg-emerald-500/10 p-3.5 rounded-2xl">
+              <Map className="w-8 h-8 text-emerald-600" />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-1 tracking-tight">Venue Map</h3>
+              <p className="text-gray-500 text-sm font-medium">Find your way around</p>
             </div>
           </div>
           <ChevronRight className="text-gray-300 w-7 h-7 group-hover:translate-x-1.5 transition-transform relative z-10" />

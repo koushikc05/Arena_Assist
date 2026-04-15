@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import OrderStatus from './pages/OrderStatus';
 import Queue from './pages/Queue';
 import Help from './pages/Help';
+import VenueMap from './pages/VenueMap';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/order/:orderId" element={<OrderStatus />} />
               <Route path="/queue" element={<Queue />} />
               <Route path="/help" element={<Help />} />
+              <Route path="/map" element={<VenueMap />} />
             </Routes>
           </Layout>
         </BrowserRouter>

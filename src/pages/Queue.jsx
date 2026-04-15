@@ -37,13 +37,20 @@ const Queue = () => {
                 </div>
               </div>
               
-              <div className="flex flex-col items-end pl-2">
-                <div className="flex items-center gap-1 text-amber-600 bg-amber-50 px-2.5 py-1.5 rounded-lg mb-0.5 border border-amber-100">
-                   <Timer className="w-4 h-4" />
-                   <span className="font-black text-sm tracking-tight">~{Math.floor(Math.random() * 15) + 5}m</span>
+                <div className="flex flex-col items-end pl-2">
+                  <div className="flex items-center gap-1 text-amber-600 bg-amber-50 px-2.5 py-1.5 rounded-lg mb-0.5 border border-amber-100">
+                     <Timer className="w-4 h-4" />
+                     <span className="font-black text-sm tracking-tight">~{Math.floor(Math.random() * 15) + 5}m</span>
+                  </div>
+                  <span className="text-[9px] uppercase font-black tracking-widest text-gray-400 mb-2">Wait</span>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); navigate(`/map?highlight=${stall.id}`); }}
+                    className="flex items-center gap-1 text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100 hover:bg-indigo-100 transition-colors"
+                  >
+                    <Store className="w-3.5 h-3.5" />
+                    <span className="font-bold text-xs">Map</span>
+                  </button>
                 </div>
-                <span className="text-[9px] uppercase font-black tracking-widest text-gray-400">Wait</span>
-              </div>
             </li>
           ))}
         </ul>
