@@ -28,10 +28,13 @@ const CheckIn = () => {
     }
   }, [seat, searchParams, navigate, setSeat]);
 
-  const handleScan = (text) => {
-    if (text && text.trim().length > 0) {
-      setSeat(text.trim().toUpperCase());
-      navigate('/home', { replace: true });
+  const handleScan = (detectedCodes) => {
+    if (detectedCodes && detectedCodes.length > 0) {
+      const text = detectedCodes[0].rawValue;
+      if (text && text.trim().length > 0) {
+        setSeat(text.trim().toUpperCase());
+        navigate('/home', { replace: true });
+      }
     }
   };
 
@@ -91,7 +94,7 @@ const CheckIn = () => {
         <div className="w-full max-w-sm flex flex-col items-center">
            <div className="w-full aspect-square rounded-3xl overflow-hidden bg-black shadow-2xl relative mb-6 border-4 border-indigo-600 border-opacity-30">
              <Scanner 
-               onResult={(text) => handleScan(text)} 
+               onScan={handleScan} 
                onError={(error) => handleError(error)} 
                formats={['qr_code']}
                styles={{ container: { width: '100%', height: '100%' } }}
