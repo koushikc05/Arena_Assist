@@ -7,17 +7,40 @@ const STALL_COORDS = {
   stall_3: { x: 400, y: 480 },   // South Concourse
 };
 
-// Simple pseudo-random hash to map arbitrary seat numbers to a visual coordinate
+const ALL_SEATS = [];
+// North section (Above court)
+for (let r = 0; r < 5; r++) {
+  for (let c = 0; c < 15; c++) {
+    ALL_SEATS.push({ id: `N${r + 1}-${c + 1}`, x: 260 + c * 20, y: 80 + r * 20 });
+  }
+}
+// South section (Below court)
+for (let r = 0; r < 5; r++) {
+  for (let c = 0; c < 15; c++) {
+    ALL_SEATS.push({ id: `S${r + 1}-${c + 1}`, x: 260 + c * 20, y: 440 + r * 20 });
+  }
+}
+// West section
+for (let r = 0; r < 10; r++) {
+  for (let c = 0; c < 4; c++) {
+    ALL_SEATS.push({ id: `W${r + 1}-${c + 1}`, x: 130 + c * 20, y: 220 + r * 20 });
+  }
+}
+// East section
+for (let r = 0; r < 10; r++) {
+  for (let c = 0; c < 4; c++) {
+    ALL_SEATS.push({ id: `E${r + 1}-${c + 1}`, x: 610 + c * 20, y: 220 + r * 20 });
+  }
+}
+
+// Simple pseudo-random hash to map arbitrary seat numbers to a literal seat
 const getSeatCoords = (seatString) => {
   if (!seatString) return null;
   let hash = 0;
   for (let i = 0; i < seatString.length; i++) {
     hash = seatString.charCodeAt(i) + ((hash << 5) - hash);
   }
-  // Map x to 200-600, y to 200-400
-  const x = 200 + (Math.abs(hash) % 400);
-  const y = 200 + (Math.abs(hash * 3) % 200);
-  return { x, y };
+  return ALL_SEATS[Math.abs(hash) % ALL_SEATS.length];
 };
 
 const ArenaMapSVG = ({ activeStallId, userSeat }) => {
@@ -68,6 +91,21 @@ const ArenaMapSVG = ({ activeStallId, userSeat }) => {
           </g>
         );
       })}
+
+      {/* Background Seats Grid */}
+      <g>
+        {ALL_SEATS.map((seat) => {
+          // If this is exactly the user's seat, we skip it here and draw it highlighted later
+          if (seatCoords && seatCoords.id === seat.id) return null;
+          
+          return (
+            <g key={seat.id} transform={`translate(${seat.x - 8}, ${seat.y - 8})`}>
+              <rect x="0" y="0" width="16" height="12" rx="3" fill="#cbd5e1" />
+              <rect x="2" y="6" width="12" height="8" rx="2" fill="#f1f5f9" />
+            </g>
+          );
+        })}
+      </g>
 
       {/* User Seat Pin */}
       {seatCoords && (
