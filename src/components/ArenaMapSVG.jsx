@@ -72,10 +72,22 @@ const ArenaMapSVG = ({ activeStallId, userSeat }) => {
       {/* User Seat Pin */}
       {seatCoords && (
         <g transform={`translate(${seatCoords.x - 20}, ${seatCoords.y - 20})`} style={{ animation: 'bounce 2s infinite' }}>
-           <path d="M 20 40 C 20 40 40 24 40 16 C 40 4.954 31.046 -4 20 -4 C 8.954 -4 0 4.954 0 16 C 0 24 20 40 20 40 Z" fill="#4f46e5" filter="drop-shadow(0 4px 6px rgb(79 70 229 / 0.4))"/>
-           <circle cx="20" cy="14" r="6" fill="#ffffff" />
-           <text x="20" y="-12" fontSize="16" fontWeight="900" fill="#312e81" textAnchor="middle" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.9)' }}>
-             You
+           {/* Seat Icon / Image */}
+           <g transform="translate(0, -6)">
+             {/* Backrest */}
+             <rect x="6" y="0" width="28" height="16" rx="4" fill="#4f46e5" filter="drop-shadow(0 4px 6px rgb(79 70 229 / 0.4))"/>
+             {/* Cushion */}
+             <rect x="8" y="16" width="24" height="12" rx="3" fill="#6366f1" />
+             {/* Armrests */}
+             <rect x="2" y="12" width="6" height="18" rx="3" fill="#312e81" />
+             <rect x="32" y="12" width="6" height="18" rx="3" fill="#312e81" />
+           </g>
+           
+           <text x="20" y="-16" fontSize="16" fontWeight="900" fill="#312e81" textAnchor="middle" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.9)' }}>
+             Seat {userSeat}
+           </text>
+           <text x="20" y="4" fontSize="10" fontWeight="bold" fill="#ffffff" textAnchor="middle">
+             YOU
            </text>
         </g>
       )}
