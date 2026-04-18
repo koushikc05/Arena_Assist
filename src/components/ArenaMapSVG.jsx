@@ -33,9 +33,11 @@ for (let r = 0; r < 10; r++) {
   }
 }
 
-// Simple pseudo-random hash to map arbitrary seat numbers to a literal seat
+// Simple exact match or fallback to hash to map arbitrary seat numbers to a literal seat
 const getSeatCoords = (seatString) => {
   if (!seatString) return null;
+  const exactMatch = ALL_SEATS.find(s => s.id === seatString.toUpperCase());
+  if (exactMatch) return exactMatch;
   let hash = 0;
   for (let i = 0; i < seatString.length; i++) {
     hash = seatString.charCodeAt(i) + ((hash << 5) - hash);
@@ -99,9 +101,12 @@ const ArenaMapSVG = ({ activeStallId, userSeat }) => {
           if (seatCoords && seatCoords.id === seat.id) return null;
           
           return (
-            <g key={seat.id} transform={`translate(${seat.x - 8}, ${seat.y - 8})`}>
-              <rect x="0" y="0" width="16" height="12" rx="3" fill="#cbd5e1" />
-              <rect x="2" y="6" width="12" height="8" rx="2" fill="#f1f5f9" />
+            <g key={seat.id} transform={`translate(${seat.x - 9}, ${seat.y - 8})`}>
+              <rect x="0" y="0" width="18" height="14" rx="3" fill="#cbd5e1" />
+              <rect x="2" y="10" width="14" height="4" rx="2" fill="#f1f5f9" />
+              <text x="9" y="7" fontSize="5" fontWeight="bold" fill="#475569" textAnchor="middle">
+                {seat.id}
+              </text>
             </g>
           );
         })}
