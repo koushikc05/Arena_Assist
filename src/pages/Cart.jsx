@@ -83,7 +83,7 @@ const Cart = () => {
                     <div className="flex-1 flex flex-col justify-between py-1">
                       <div className="flex justify-between items-start mb-1 gap-2">
                         <h3 className="font-bold text-gray-900 text-lg leading-tight">{item.name}</h3>
-                        <p className="font-bold text-lg text-gray-900">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="font-bold text-lg text-gray-900">₹{(item.price * item.quantity).toFixed(2)}</p>
                       </div>
                       <div className="flex justify-between items-center mt-auto">
                         <p className="text-sm font-bold text-gray-400 uppercase tracking-wider">Qty: {item.quantity}</p>
@@ -101,17 +101,17 @@ const Cart = () => {
               </ul>
 
               <div className="bg-gray-50 rounded-[2rem] p-6 border border-gray-100">
-                <div className="flex justify-between items-center mb-3 text-gray-500">
-                  <span className="font-medium text-sm text-gray-500">Subtotal</span>
-                  <span className="font-bold text-gray-900">${cartTotal.toFixed(2)}</span>
+                <div className="flex justify-between items-center text-sm mb-2">
+                  <span className="font-medium text-gray-600">Subtotal</span>
+                  <span className="font-bold text-gray-900">₹{cartTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between items-center mb-5 text-gray-500">
                   <span className="font-medium text-sm text-gray-500">Delivery to Seat {seat}</span>
                   <span className="font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-md">Free</span>
                 </div>
-                <div className="border-t border-gray-200 border-dashed pt-5 flex justify-between items-end">
-                  <span className="font-bold text-gray-900 text-xl tracking-tight">Total</span>
-                  <span className="font-black text-gray-900 text-3xl tracking-tight">${cartTotal.toFixed(2)}</span>
+                <div className="flex justify-between items-center pt-3 border-t-2 border-gray-100 border-dashed">
+                  <span className="font-bold text-gray-600 uppercase tracking-widest text-xs">Total</span>
+                  <span className="font-black text-gray-900 text-3xl tracking-tight">₹{cartTotal.toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -134,7 +134,7 @@ const Cart = () => {
                    Processing...
                 </>
               ) : (
-                `Place Order • $${cartTotal.toFixed(2)}`
+                `Place Order • ₹${cartTotal.toFixed(2)}`
               )}
             </button>
           </div>

@@ -49,7 +49,7 @@ const Menu = () => {
                   </div>
                   
                   <div className="flex items-center justify-between mt-auto">
-                    <p className="font-black text-gray-900">${item.price.toFixed(2)}</p>
+                    <p className="font-black text-gray-900">₹{item.price.toFixed(2)}</p>
                     <button 
                       onClick={() => addItem(item)}
                       className="bg-gray-900 text-white rounded-2xl hover:bg-gray-700 hover:scale-105 active:scale-95 transition-all p-2 flex items-center justify-center shadow-md shadow-gray-200"
@@ -79,7 +79,7 @@ const Menu = () => {
                 </div>
                 <span className="font-bold text-xl drop-shadow-sm">View Cart</span>
               </div>
-              <span className="font-bold text-xl tracking-wide drop-shadow-sm">${cartTotal.toFixed(2)}</span>
+              <span className="font-bold text-xl tracking-wide drop-shadow-sm">₹{cartTotal.toFixed(2)}</span>
             </Link>
           </div>
         </div>

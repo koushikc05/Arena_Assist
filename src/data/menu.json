@@ -1,23 +1,44 @@
 [
   {
     "id": "item_1",
-    "name": "Classic Hot Dog",
-    "price": 6.50,
-    "image": "placeholder_dog.jpg",
+    "name": "Masala Dosa",
+    "price": 120,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
     "category": "Food"
   },
   {
     "id": "item_2",
-    "name": "Large Soda",
-    "price": 4.00,
-    "image": "placeholder_soda.jpg",
-    "category": "Drinks"
+    "name": "Idli Sambar",
+    "price": 80,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "category": "Food"
   },
   {
     "id": "item_3",
-    "name": "Nachos with Cheese",
-    "price": 8.00,
-    "image": "placeholder_nachos.jpg",
+    "name": "Medu Vada",
+    "price": 60,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "category": "Food"
+  },
+  {
+    "id": "item_4",
+    "name": "Filter Coffee",
+    "price": 40,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "category": "Drinks"
+  },
+  {
+    "id": "item_5",
+    "name": "Chicken Chettinad",
+    "price": 250,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "category": "Food"
+  },
+  {
+    "id": "item_6",
+    "name": "Hyderabadi Biryani",
+    "price": 300,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
     "category": "Food"
   }
 ]
