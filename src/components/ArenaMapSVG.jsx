@@ -68,8 +68,11 @@ const ArenaMapSVG = ({ activeStallId, userSeat }) => {
             fill="none" stroke="#cbd5e1" strokeWidth="80" opacity="0.5"/>
 
       {/* Exits & Restrooms - Subtle Markers */}
-      <text x="400" y="40" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">NORTH ENTRANCE</text>
-      <text x="400" y="570" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">SOUTH ENTRANCE</text>
+      <text x="250" y="40" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">NORTH ENTRANCE - GATE A</text>
+      <text x="550" y="40" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">NORTH ENTRANCE - GATE B</text>
+      
+      <text x="250" y="570" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">SOUTH ENTRANCE - GATE A</text>
+      <text x="550" y="570" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">SOUTH ENTRANCE - GATE B</text>
       
       {/* Stall Markers */}
       {Object.entries(STALL_COORDS).map(([id, coords]) => {

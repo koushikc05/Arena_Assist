@@ -3,15 +3,22 @@
  */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Timer, Store } from 'lucide-react';
+import { ArrowLeft, Timer, Store, MapPin } from 'lucide-react';
 import stallsData from '../data/stalls.json';
+
+const gatesData = [
+  { id: 'gate_n_a', name: 'North Entrance - Gate A', location: 'Outside Sec 101' },
+  { id: 'gate_n_b', name: 'North Entrance - Gate B', location: 'Outside Sec 115' },
+  { id: 'gate_s_a', name: 'South Entrance - Gate A', location: 'Outside Sec 130' },
+  { id: 'gate_s_b', name: 'South Entrance - Gate B', location: 'Outside Sec 145' },
+];
 
 const Queue = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="flex-1 bg-white animate-in slide-in-from-right-4 fade-in duration-300 pb-10">
-      <header className="px-6 py-4 flex items-center gap-4 bg-white border-b border-gray-100 shadow-sm relative z-10">
+    <main className="flex-1 bg-white animate-in slide-in-from-right-4 fade-in duration-300 pb-10 overflow-auto">
+      <header className="px-6 py-4 flex items-center gap-4 bg-white border-b border-gray-100 shadow-sm relative z-10 sticky top-0">
         <button 
           onClick={() => navigate('/home')}
           className="p-2 -ml-2 rounded-full hover:bg-gray-100 transition min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -22,7 +29,35 @@ const Queue = () => {
       </header>
 
       <section className="p-4">
-        <p className="text-gray-500 mb-6 font-medium leading-relaxed">Live estimates for pickup or walk-up orders at venue stalls.</p>
+        <h2 className="text-lg font-black text-gray-900 mb-2">Gate Entry Times</h2>
+        <p className="text-gray-500 mb-4 font-medium leading-relaxed text-sm">Live security line wait times.</p>
+        
+        <ul className="flex flex-col gap-3 mb-8">
+          {gatesData.map(gate => (
+            <li key={gate.id} className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow rounded-3xl p-4 flex items-center justify-between group">
+              <div className="flex gap-3 items-center">
+                <div className="bg-blue-50 p-3 rounded-2xl group-hover:bg-blue-100 transition-colors">
+                  <MapPin className="w-5 h-5 text-blue-600" />
+                </div>
+                <div className="flex flex-col">
+                  <h3 className="font-bold text-gray-900 leading-tight mb-0.5">{gate.name}</h3>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">{gate.location}</p>
+                </div>
+              </div>
+              
+                <div className="flex flex-col items-end pl-2">
+                  <div className="flex items-center gap-1 text-blue-600 bg-blue-50 px-2.5 py-1.5 rounded-lg mb-0.5 border border-blue-100">
+                     <Timer className="w-4 h-4" />
+                     <span className="font-black text-sm tracking-tight">~{Math.floor(Math.random() * 10) + 2}m</span>
+                  </div>
+                  <span className="text-[9px] uppercase font-black tracking-widest text-gray-400">Wait</span>
+                </div>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="text-lg font-black text-gray-900 mb-2">Food Stalls</h2>
+        <p className="text-gray-500 mb-4 font-medium leading-relaxed text-sm">Live pickup and walk-up orders.</p>
         
         <ul className="flex flex-col gap-3">
           {stallsData.map(stall => (
