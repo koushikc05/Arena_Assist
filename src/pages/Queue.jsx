@@ -5,13 +5,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Timer, Store, MapPin } from 'lucide-react';
 import stallsData from '../data/stalls.json';
-
-const gatesData = [
-  { id: 'gate_n_a', name: 'North Entrance - Gate A', location: 'Outside Sec 101' },
-  { id: 'gate_n_b', name: 'North Entrance - Gate B', location: 'Outside Sec 115' },
-  { id: 'gate_s_a', name: 'South Entrance - Gate A', location: 'Outside Sec 130' },
-  { id: 'gate_s_b', name: 'South Entrance - Gate B', location: 'Outside Sec 145' },
-];
+import gatesData from '../data/gates.json';
 
 const Queue = () => {
   const navigate = useNavigate();
@@ -50,7 +44,14 @@ const Queue = () => {
                      <Timer className="w-4 h-4" />
                      <span className="font-black text-sm tracking-tight">~{Math.floor(Math.random() * 10) + 2}m</span>
                   </div>
-                  <span className="text-[9px] uppercase font-black tracking-widest text-gray-400">Wait</span>
+                  <span className="text-[9px] uppercase font-black tracking-widest text-gray-400 mb-2">Wait</span>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); navigate(`/map?highlight=${gate.id}`); }}
+                    className="flex items-center gap-1 text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100 hover:bg-blue-100 transition-colors"
+                  >
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span className="font-bold text-xs">Map</span>
+                  </button>
                 </div>
             </li>
           ))}

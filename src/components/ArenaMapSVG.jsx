@@ -8,6 +8,13 @@ const STALL_COORDS = {
   stall_4: { x: 150, y: 100 },   // NW Corner
 };
 
+const GATE_COORDS = {
+  gate_n_a: { x: 250, y: 35 },
+  gate_n_b: { x: 550, y: 35 },
+  gate_s_a: { x: 250, y: 565 },
+  gate_s_b: { x: 550, y: 565 },
+};
+
 const ALL_SEATS = [];
 // North section (Above court)
 for (let r = 0; r < 5; r++) {
@@ -68,11 +75,36 @@ const ArenaMapSVG = ({ activeStallId, userSeat }) => {
             fill="none" stroke="#cbd5e1" strokeWidth="80" opacity="0.5"/>
 
       {/* Exits & Restrooms - Subtle Markers */}
-      <text x="250" y="40" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">NORTH ENTRANCE - GATE A</text>
-      <text x="550" y="40" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">NORTH ENTRANCE - GATE B</text>
-      
-      <text x="250" y="570" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">SOUTH ENTRANCE - GATE A</text>
-      <text x="550" y="570" textAnchor="middle" fill="#cbd5e1" fontSize="12" fontWeight="bold" tracking="widest">SOUTH ENTRANCE - GATE B</text>
+      {Object.entries(GATE_COORDS).map(([id, coords]) => {
+        const isActive = activeStallId && activeStallId === id;
+        const isMuted = activeStallId && activeStallId !== id;
+        
+        let label = '';
+        if (id === 'gate_n_a') label = 'GATE A';
+        if (id === 'gate_n_b') label = 'GATE B';
+        if (id === 'gate_s_a') label = 'GATE A';
+        if (id === 'gate_s_b') label = 'GATE B';
+
+        return (
+          <g key={id} transform={`translate(${coords.x - 24}, ${coords.y - 24})`} 
+             style={{ 
+               transition: 'all 0.3s ease',
+               opacity: isMuted ? 0.4 : 1,
+               transform: `translate(${coords.x - 24}px, ${coords.y - 24}px) scale(${isActive ? 1.2 : 1})`,
+               transformOrigin: '24px 24px'
+             }}>
+            <circle cx="24" cy="24" r="20" fill={isActive ? '#3b82f6' : '#ffffff'} stroke={isActive ? '#2563eb' : '#cbd5e1'} strokeWidth="2" filter="drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))"/>
+            <svg x="12" y="12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#64748b'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"></path>
+              <path d="M2 20h20"></path>
+              <path d="M14 12v.01"></path>
+            </svg>
+            <text x="24" y="55" fontSize="12" fontWeight="bold" fill={isActive ? '#2563eb' : '#64748b'} textAnchor="middle" style={{ filter: 'drop-shadow(0px 1px 2px rgba(255,255,255,0.8))' }}>
+              {label}
+            </text>
+          </g>
+        );
+      })}
       
       {/* Stall Markers */}
       {Object.entries(STALL_COORDS).map(([id, coords]) => {

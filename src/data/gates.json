@@ -1,0 +1,22 @@
+[
+  {
+    "id": "gate_n_a",
+    "name": "North Entrance - Gate A",
+    "location": "Outside Sec 101"
+  },
+  {
+    "id": "gate_n_b",
+    "name": "North Entrance - Gate B",
+    "location": "Outside Sec 115"
+  },
+  {
+    "id": "gate_s_a",
+    "name": "South Entrance - Gate A",
+    "location": "Outside Sec 130"
+  },
+  {
+    "id": "gate_s_b",
+    "name": "South Entrance - Gate B",
+    "location": "Outside Sec 145"
+  }
+]

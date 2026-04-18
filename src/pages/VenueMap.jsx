@@ -5,6 +5,7 @@ import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useSeat } from '../hooks/useSeat';
 import ArenaMapSVG from '../components/ArenaMapSVG';
 import stallsData from '../data/stalls.json';
+import gatesData from '../data/gates.json';
 
 const VenueMap = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const VenueMap = () => {
   
   const { seat } = useSeat();
 
-  const activeStallData = stallsData.find(s => s.id === activeStallId);
+  const activeStallData = stallsData.find(s => s.id === activeStallId) || gatesData.find(g => g.id === activeStallId);
 
   return (
     <main className="flex-1 bg-white animate-in fade-in duration-300 flex flex-col h-full overflow-hidden">
