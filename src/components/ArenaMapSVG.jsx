@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import { MapPin, User, Store } from 'lucide-react';
 
 const STALL_COORDS = {
-  stall_1: { x: 400, y: 50 },    // North Edge
-  stall_2: { x: 750, y: 300 },   // East Edge
-  stall_3: { x: 400, y: 550 },   // South Edge
-  stall_4: { x: 50, y: 300 },    // West Edge
+  stall_1: { x: 650, y: 100 },   // NE Corner
+  stall_2: { x: 650, y: 500 },   // SE Corner
+  stall_3: { x: 150, y: 500 },   // SW Corner
+  stall_4: { x: 150, y: 100 },   // NW Corner
 };
 
 const ALL_SEATS = [];

@@ -2,21 +2,21 @@
   {
     "id": "stall_1",
     "name": "Nair mess",
-    "location": "North Concourse, Section 102"
+    "location": "North-East Corner, Section 102"
   },
   {
     "id": "stall_2",
     "name": "Ratna Cafe",
-    "location": "East Concourse, Section 115"
+    "location": "South-East Corner, Section 115"
   },
   {
     "id": "stall_3",
     "name": "Chennai Dosa center",
-    "location": "South Concourse, Section 130"
+    "location": "South-West Corner, Section 130"
   },
   {
     "id": "stall_4",
     "name": "momo genie",
-    "location": "West Concourse, Section 145"
+    "location": "North-West Corner, Section 145"
   }
 ]
