@@ -3,77 +3,77 @@
     "id": "item_1",
     "name": "Masala Dosa",
     "price": 120,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/masala dosa.jpg",
     "category": "Food"
   },
   {
     "id": "item_2",
     "name": "Idli Sambar",
     "price": 80,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/idli sambar.jpg",
     "category": "Food"
   },
   {
     "id": "item_3",
     "name": "Medu Vada",
     "price": 60,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/medu vada.jpg",
     "category": "Food"
   },
   {
     "id": "item_4",
     "name": "Filter Coffee",
     "price": 40,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/filter coffee.jpg",
     "category": "Drinks"
   },
   {
     "id": "item_5",
     "name": "Chicken Chettinad",
     "price": 250,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/chicken chettinad.jpg",
     "category": "Food"
   },
   {
     "id": "item_6",
     "name": "Hyderabadi Biryani",
     "price": 300,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/hyderabadi biryani.jpg",
     "category": "Food"
   },
   {
     "id": "item_7",
     "name": "Fresh Watermelon Juice",
     "price": 60,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/fresh watermelon juice.jpg",
     "category": "Drinks"
   },
   {
     "id": "item_8",
     "name": "Mango Lassi",
     "price": 90,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/mango lassi.jpg",
     "category": "Drinks"
   },
   {
     "id": "item_9",
     "name": "Samosa",
     "price": 30,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/samosa.jpg",
     "category": "Snacks"
   },
   {
     "id": "item_10",
     "name": "Banana Chips",
     "price": 40,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/banana chips.jpg",
     "category": "Snacks"
   },
   {
     "id": "item_11",
     "name": "Murukku",
     "price": 50,
-    "image": "https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=500&auto=format&fit=crop&q=60",
+    "image": "/menuimages/murukku.jpg",
     "category": "Snacks"
   }
 ]
