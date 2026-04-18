@@ -1,17 +1,22 @@
 [
   {
     "id": "stall_1",
-    "name": "North End Bites",
+    "name": "Nair mess",
     "location": "North Concourse, Section 102"
   },
   {
     "id": "stall_2",
-    "name": "East Side Drinks",
+    "name": "Ratna Cafe",
     "location": "East Concourse, Section 115"
   },
   {
     "id": "stall_3",
-    "name": "South Grill",
+    "name": "Chennai Dosa center",
     "location": "South Concourse, Section 130"
+  },
+  {
+    "id": "stall_4",
+    "name": "momo genie",
+    "location": "West Concourse, Section 145"
   }
 ]
