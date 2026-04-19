@@ -13,6 +13,7 @@ import OrderStatus from './pages/OrderStatus';
 import Queue from './pages/Queue';
 import Help from './pages/Help';
 import VenueMap from './pages/VenueMap';
+import SeatCheckIn from './pages/SeatCheckIn';
 
 const App = () => {
   return (
@@ -24,6 +25,8 @@ const App = () => {
             <Routes>
               <Route path="/" element={<CheckIn />} />
               <Route path="/home" element={<Home />} />
+              {/* QR deep-link: scanning /home/:seatId auto-logs the user in */}
+              <Route path="/home/:seatId" element={<SeatCheckIn />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/order/:orderId" element={<OrderStatus />} />
