@@ -30,9 +30,19 @@ const CheckIn = () => {
 
   const handleScan = (detectedCodes) => {
     if (detectedCodes && detectedCodes.length > 0) {
-      const text = detectedCodes[0].rawValue;
-      if (text && text.trim().length > 0) {
-        setSeat(text.trim().toUpperCase());
+      const text = detectedCodes[0].rawValue?.trim();
+      if (!text) return;
+
+      // If the QR encodes a full URL (e.g. https://.../home/S5-5),
+      // navigate to it directly so SeatCheckIn handles the login.
+      // Otherwise treat the raw value as the seat ID directly.
+      try {
+        const url = new URL(text);
+        // It's a valid URL — let the browser navigate to it
+        window.location.href = url.href;
+      } catch {
+        // Not a URL — treat the whole value as the seat ID
+        setSeat(text.toUpperCase());
         navigate('/home', { replace: true });
       }
     }
