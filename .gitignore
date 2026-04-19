@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Manual deploy scripts (not for git-triggered Cloud Build)
+cloudbuild-quick.yaml
